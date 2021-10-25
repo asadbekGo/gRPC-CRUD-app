@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+option go_package = "app/proto";
+
+message User {
+    string FirstName = 1;
+    string LastName = 2;
+    string Username = 3;
+    int32 Age = 4;
+}
+
+message GetAllUserRequest {
+    string TableName = 1;
+}
+
+message GetAllUserResponse {
+    repeated User User = 2;
+}
+
+message GetUserRequest {
+    int32 Id = 1;
+}
+
+message GetUserResponse  {
+    int32 Id = 1;
+    User User = 2;
+}   
+
+message PostUserRequest {
+    User User = 1;
+}
+
+message PostUserResponse  {
+    int32 Id = 1;
+    User User = 2;
+}   
+
+message DeleteUserRequest {
+    int32 Id = 1;
+}
+
+message DeleteUserResponse {
+    int32 Id = 1;
+    User User = 2;
+}
+
+message UpdateUserRequest {
+    int32 Id = 1;
+    User User = 2;
+}
+
+message UpdateUserResponse {
+    User User = 2;
+}
+
+service UserService {
+
+    rpc AllUser(GetAllUserRequest) returns (GetAllUserResponse) {};
+    rpc GetUser(GetUserRequest) returns (GetUserResponse) {};
+    rpc PostUser(PostUserRequest) returns (PostUserResponse) {};
+    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {};
+    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {};
+}
