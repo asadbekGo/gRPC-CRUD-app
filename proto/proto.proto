@@ -14,7 +14,7 @@ message GetAllUserRequest {
 }
 
 message GetAllUserResponse {
-    repeated User User = 2;
+    repeated User User = 1;
 }
 
 message GetUserRequest {
